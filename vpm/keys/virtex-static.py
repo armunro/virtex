@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 import HID
-import lorem
-
-from HID import CODE
+import sys
 
 if __name__ == "__main__":
-    def generate_lorem(num_paragraphs=3):
-        paragraphs = [lorem.paragraph() for _ in range(num_paragraphs)]
-        return "\n\n".join(paragraphs)
-    HID.type_string(generate_lorem())
+    with open(sys.argv[1], 'r') as file:
+        content = file.read()
+        HID.type_string(content)
