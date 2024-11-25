@@ -3,6 +3,8 @@
 dietpi-software install 9 # node.js
 dietpi-software install 17 # git
 dietpi-software install 130 # python3
+npm install -g @bitwarden/cli
+apt install jq
 
 echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
 echo "dwc2" | sudo tee -a /etc/modules
