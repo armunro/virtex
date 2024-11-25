@@ -1,8 +1,5 @@
 # virtex
-![virtex-overview](https://github.com/user-attachments/assets/e4667d71-ee57-4f77-94bc-dcc0983403da)
-
-
-## Introduction
+![device](https://github.com/user-attachments/assets/8c0a127d-172a-4b69-ba02-36b4c11f8f58)![virtex-overview](https://github.com/user-attachments/assets/e4667d71-ee57-4f77-94bc-dcc0983403da)
 
 The VIRTEX Bridge device is a multifunction peripheral that runs on the Raspberry Pi Zero 2 to provide the following capabilities:
 - Enable Wi-Fi access as either a Host or Access Point
