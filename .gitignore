@@ -165,5 +165,5 @@ cython_debug/
 
 # Virtex Secrets
 
-*.bwref.json
+*.bwref.yaml
 *.bwpass.txt
