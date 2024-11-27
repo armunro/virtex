@@ -13,6 +13,10 @@ def open_run():
     # press Left Start + R
     HID.press(bytes([HID.CODE.LEFT_GUI, 0, HID.CODE.KEY_R, *[0] * 5]))
 
+def open_start():
+    # press Left Start + R
+    HID.press(bytes([HID.CODE.LEFT_GUI, 0, *[0] * 5]))
+
 
 def command_prompt(run_as=False):
     open_run()

@@ -167,3 +167,4 @@ cython_debug/
 
 *.bwref.yaml
 *.bwpass.txt
+.env

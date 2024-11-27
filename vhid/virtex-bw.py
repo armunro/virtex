@@ -8,7 +8,7 @@ import yaml
 import Bitwarden
 from pick import pick
 from colorama import Fore, Back, Style
-from tqdm import tqdm
+from alive_progress import alive_bar
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
@@ -31,17 +31,28 @@ def pick_item():
     option,index = pick(files, title)
     return option,index
 
+def pick_template():
+    formats = [{"name": "Username", "template": "{username}"},
+        {"name": "Pasword", "template": "{password}"},
+        {"name": "Username [tab] Password [enter]",
+        "template": "{username}\t{password}\n"}
+    ]
+    return pick(formats, "Output Format:")
+
 if __name__ == "__main__":
-    with tqdm(total=4, desc="Processing", unit="step") as pbar:
+    with alive_bar(7, manual=True) as bar:
+        bar(.1)
         option,index = pick_item()
-        pbar.update(1)
+        bar(.2)
         env = Bitwarden.unlock_bitwarden()
-        pbar.update(2)
+        bar(.3)
         bwRefPath =  os.path.join(Bitwarden.calc_ref_path(),  option)
+        bar(.4)
         bwRef = load_bitwarden_ref(bwRefPath)
-        pbar.update(3)
+        bar(.5)
+        option,index = pick_template()
+        bar(.6)
         secret = Bitwarden.get_item(bwRef["id"], env)
-        compiledString = replace_template_tokens(bwRef["template"], secret["login"]["username"], secret["login"]["password"])
+        compiledString = replace_template_tokens(option["template"], secret["login"]["username"], secret["login"]["password"])
         HID.type_string(compiledString)
-        pbar.update(4)
-        pbar.close()
+        bar(.7)

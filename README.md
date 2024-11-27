@@ -9,10 +9,16 @@ The VIRTEX Bridge device is a multifunction peripheral that runs on the Raspberr
 
 ## Hardware Setup
 Complete hardware setup is covered in the [Hardware Setup Guide](docs/HardwareSetup.md).
-## Software Setup
 
+## Software Setup
 ```bash
 git clone git@github.com:armunro/virtex.git
 cd virtex/install
-./installVirtex.sh
+./install.sh
 ```
+## Functions
+
+### Keyboard 
+- [Bitwarden](docs/Bitwarden.md) - Automated credential entry.
+- Console - `vtx-console` for direct text entry.
+- VirText - Keyboard automation scripting with `vtx-vtxt`

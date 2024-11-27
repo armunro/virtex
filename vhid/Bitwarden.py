@@ -29,5 +29,5 @@ def create_ref(id, template="{username}\t{password}\n"):
 
 def calc_ref_path():
     script_dir = os.path.dirname(os.path.realpath(__file__))
-    path = os.path.join(script_dir,"refs")
+    path = os.path.join(script_dir,"bw-refs")
     return path

@@ -12,7 +12,6 @@ from tqdm import tqdm
 from dotenv import load_dotenv
 
 
-
 if __name__ == "__main__":
     term = sys.argv[1]
     with tqdm(total=4, desc="Processing", unit="step") as pbar:
@@ -33,10 +32,10 @@ if __name__ == "__main__":
             itemsFormatted.append({'id': element["id"], 'name': element["name"] })
 
         option, index = pick(itemsFormatted, "Select an item:")
-        newRef = create_ref(option["id"])
+        newRef = Bitwarden.create_ref(option["id"])
         print("Enter name: ")
         name = input()
-        outPath = os.path.join(script_dir, 'refs/', name + '.bwref.yaml')
+        outPath = os.path.join(script_dir, 'bw-refs/', name + '.bwref.yaml')
         with open(outPath, 'w') as file:
             yaml.dump(newRef, file)
         pbar.update(4)
