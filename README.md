@@ -21,6 +21,8 @@ cd virtex/install
 ## Functions
 
 ### Keyboard 
-- [Bitwarden](docs/Bitwarden.md) - Automated credential entry.
+- [Bitwarden](docs/Bitwarden.md) - `vtx-bwref` and `vtx-bw` for qatomated credential entry.
 - [Console](docs/Console.md) - `vtx-console` for direct text entry.
-- [VirText](docs/Virtext.md) - Keyboard automation scripting with `vtx-vtxt`
+- [VirText](docs/Virtext.md) - `vtx-vtxt` for keyboard/mouse automation.
+- Static - `vtx-static` for static text file entry.
+- Lorem - `vtx-lorem` for Lorem Ipsum paragraph generation.
