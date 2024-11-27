@@ -8,11 +8,9 @@ Executes virtext scripts
 notepad: 1
 sleep: 1
 print: hello what is up
-
 ```
 
 ## Commands
-
 - print: - Sends text after the `:` to the VKB  
 - winrun - Opens the Windows run dialog
 - winstart - Opens the Windows Start bar
@@ -20,4 +18,10 @@ print: hello what is up
 - sleep - Add delays for UI readiness.
 - enter - Press the enter key
 - key - Press any key in HID.CODE.*
+
+
+## Running a VirText Script
+
+```bash
+vtx-vtxt ~/virtext/vhid/vtxt/test.vtxt
 ```
