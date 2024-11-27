@@ -9,12 +9,7 @@ import Bitwarden
 from pick import pick
 from colorama import Fore, Back, Style
 from alive_progress import alive_bar
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
-from HID import CODE
-import HID
+from zero_hid import Keyboard
 
 def replace_template_tokens(template, username, password):
     return template.replace("{username}", username).replace("{password}", password)
@@ -54,5 +49,6 @@ if __name__ == "__main__":
         bar(.6)
         secret = Bitwarden.get_item(bwRef["id"], env)
         compiledString = replace_template_tokens(option["template"], secret["login"]["username"], secret["login"]["password"])
-        HID.type_string(compiledString)
+        with Keyboard() as k:
+            k.type(compiledString)
         bar(.7)
