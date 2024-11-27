@@ -20,5 +20,5 @@ cd virtex/install
 
 ### Keyboard 
 - [Bitwarden](docs/Bitwarden.md) - Automated credential entry.
-- Console - `vtx-console` for direct text entry.
-- VirText - Keyboard automation scripting with `vtx-vtxt`
+- [Console](docs/Console.md) - `vtx-console` for direct text entry.
+- [VirText](docs/Virtext.md) - Keyboard automation scripting with `vtx-vtxt`
