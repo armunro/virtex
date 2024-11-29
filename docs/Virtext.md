@@ -17,7 +17,7 @@ print: hello what is up
 - notepad - Opens notepad
 - sleep - Add delays for UI readiness.
 - enter - Press the enter key
-- key - Press any key in HID.CODE.*
+- key - Press any key in *
 
 
 ## Running a VirText Script
