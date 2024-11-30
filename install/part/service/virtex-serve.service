@@ -1,0 +1,12 @@
+[Unit]
+Description=Start Virtex HTTP Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/flask --app /root/virtex/vtx-serve run
+
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target

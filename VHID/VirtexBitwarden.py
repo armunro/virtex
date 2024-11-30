@@ -40,17 +40,10 @@ def pick_item():
     return option,index
 
 def pick_template():
-    
     formats= ["Username","Password", "Password+[ENTER]", "Username+[TAB]+Password+[ENTER]"]
-    templates = [{"name": "Username", "template": "{username}"},
-        {"name": "Pasword", "template": "{password}\n"},
-        {"name": "Username [tab] Password [enter]",
-        "template": "{username}\t{password}\n"}
-    ]
+    templates = ["{username}", "{password}", "{password}\n","{username}\t{password}\n"]
     option,index = pick(formats, "Output Format:")
-    
-    return templates[index]["template"]
-
+    return templates[index]
 
 def create_bwref(searchTerm):
     script_dir = os.path.dirname(os.path.realpath(__file__))
