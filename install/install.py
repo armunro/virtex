@@ -60,15 +60,13 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 #run_command("dietpi-software install 17")  # Git
 #run_command("dietpi-software install 130")  # Python3
 
-# Install npm and Python packages
-run_command("npm install -g @bitwarden/cli")
+ensure_node_package_installed("@bitwarden/cli")
+run_command("apt install -y jq")
+
 
 python_packages = ["pyyaml", "pick", "colorama", "tqdm", "python-dotenv", "flask"]
 for package in python_packages:
     run_command(f"pip install {package}")
-
-# Install `jq` package
-run_command("apt install -y jq")
 
 # Update configuration files
 with open("/boot/config.txt", "a") as f:
