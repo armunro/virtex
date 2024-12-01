@@ -4,26 +4,30 @@ import os
 import subprocess
 import shutil
 
+python_packages = ["pyyaml", "pick", "colorama", "tqdm", "python-dotenv", "flask"]
+node_packages = ["@bitwarden/cli"]
+dietpi_packages = [9, 17, 130] # node, git, python
+script_dir = os.path.dirname(os.path.abspath(__file__))
+usb_start_script = os.path.join(script_dir, "part/vpm/virtex-start-usb")
+service_file = os.path.join(script_dir, "part/service/virtex.service")
+
 def run_command(command):
-    """Run a shell command and exit on failure."""
     result = subprocess.run(command, shell=True)
     if result.returncode != 0:
         print(f"Error executing: {command}")
         exit(result.returncode)
-import subprocess
+
+def enable_usb_hid():
+    with open("/boot/config.txt", "a") as f:
+        f.write("dtoverlay=dwc2\n")
+
+    with open("/etc/modules", "a") as f:
+        f.write("dwc2\n")
+        f.write("libcomposite\n")
+
 
 def ensure_node_package_installed(package_name):
-    """
-    Ensures a Node.js package is installed globally. Installs it if not found.
-    
-    Parameters:
-        package_name (str): The name of the Node.js package to check and install.
-    
-    Returns:
-        bool: True if the package is successfully installed, False otherwise.
-    """
     try:
-        # Check if the package is installed globally
         result = subprocess.run(
             ["npm", "list", "-g", package_name, "--depth=0"],
             stdout=subprocess.PIPE,
@@ -34,7 +38,6 @@ def ensure_node_package_installed(package_name):
             print(f"'{package_name}' is already installed.")
             return True
         
-        # If not installed, install the package globally
         print(f"Installing '{package_name}'...")
         install_result = subprocess.run(
             ["npm", "install", "-g", package_name],
@@ -52,32 +55,17 @@ def ensure_node_package_installed(package_name):
         print("npm is not installed or not available in the PATH.")
         return False
 
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Install DietPi software
-#run_command("dietpi-software install 9")  # Node.js
-#run_command("dietpi-software install 17")  # Git
-#run_command("dietpi-software install 130")  # Python3
-
-ensure_node_package_installed("@bitwarden/cli")
-run_command("apt install -y jq")
-
-
-python_packages = ["pyyaml", "pick", "colorama", "tqdm", "python-dotenv", "flask"]
 for package in python_packages:
     run_command(f"pip install {package}")
+    
+for package in node_packages:
+    ensure_node_package_installed(package)
+    
+for package in dietpi_packages:
+    run_command(f"dietpi-software install {package}")
 
-# Update configuration files
-with open("/boot/config.txt", "a") as f:
-    f.write("dtoverlay=dwc2\n")
+enable_usb_hid()  
 
-with open("/etc/modules", "a") as f:
-    f.write("dwc2\n")
-    f.write("libcomposite\n")
-
-# Copy and set permissions for scripts and services
-usb_start_script = os.path.join(script_dir, "part/vpm/virtex-start-usb")
 if os.path.exists(usb_start_script):
     shutil.copy(usb_start_script, "/usr/bin")
     run_command("chmod +x /usr/bin/virtex-start-usb")
@@ -85,7 +73,6 @@ else:
     print(f"File not found: {usb_start_script}")
     exit(1)
 
-service_file = os.path.join(script_dir, "part/service/virtex.service")
 if os.path.exists(service_file):
     shutil.copy(service_file, "/etc/systemd/system")
     run_command("systemctl daemon-reload")

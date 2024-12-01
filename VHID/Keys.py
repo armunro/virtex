@@ -1,14 +1,9 @@
 
 # encoding=utf-8
 # US keyboard layout
-
-
 import os
 import time
 from tqdm import tqdm
-
-
-
 KEY_A = 0x4  # a A
 KEY_B = 0x5  # b B
 KEY_C = 0x6  # c C

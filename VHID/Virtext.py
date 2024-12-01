@@ -23,6 +23,5 @@ def exec_virtext_step(step):
 def execute_virtext_file(scriptPath):
     with open(scriptPath, "r") as file:
         data = yaml.safe_load(file)
-        steps = data.get('steps', [])
         for step in alive_it(data["steps"]):  
             exec_virtext_step(step)

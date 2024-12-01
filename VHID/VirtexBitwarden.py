@@ -7,13 +7,10 @@ import subprocess
 import yaml
 import Bitwarden
 import VirtexBitwarden
-
 from pick import pick
 from colorama import Fore, Back, Style
 import Keys
 import glob
-
-
 
 def replace_template_tokens(template, username, password):
     return template.replace("{username}", username).replace("{password}", password)

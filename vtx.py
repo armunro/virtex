@@ -8,7 +8,6 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
 import Keys
 import VirtexBitwarden
-import VirtexLorem
 import VirtexConsole
 import Virtext
 
@@ -21,9 +20,6 @@ parse_bw = subparsers.add_parser('bitwarden', help='Automated BW item entry', al
 parse_bw.add_argument("-r", "--ref", help='The bitwarden reference to type.' )
 # Console
 parse_console = subparsers.add_parser('console', help='Interactive terminal with remote text entry.')
-# Lorem
-parse_lorem = subparsers.add_parser('lorem', help='Lorem Ipsum output.')
-parse_lorem.add_argument('paragraphs', type=int)
 # Vtxt
 parse_lorem = subparsers.add_parser('vtxt', help='Replay HID automation files remotely.')
 parse_lorem.add_argument('file')
@@ -36,8 +32,6 @@ if args.command in ["bw", "bitwarden"]:
         VirtexBitwarden.send_bitwarden_item()
 elif args.command == 'console':
     VirtexConsole.show_console()
-elif args.command == 'lorem':
-    VirtexLorem.generate_lorem(args.paragraphs)
 elif args.command == 'vtxt':
     Virtext.execute_virtext_file(args.file)
 else:

@@ -18,11 +18,16 @@ git clone git@github.com:armunro/virtex.git
 cd virtex/install
 ./install.sh
 ```
-## Functions
 
-### Keyboard 
-- [Bitwarden](docs/Bitwarden.md) - `vtx-bwref` and `vtx-bw` for qatomated credential entry.
-- [Console](docs/Console.md) - `vtx-console` for direct text entry.
-- [VirText](docs/Virtext.md) - `vtx-vtxt` for keyboard/mouse automation.
-- Static - `vtx-static` for static text file entry.
-- Lorem - `vtx-lorem` for Lorem Ipsum paragraph generation.
+## Command Line Usage
+```bash
+# Run a VTXT step file 
+vtx vtxt --file ~/sample.vtxt.yaml
+
+# Send text using an interactive terminal
+vtx console --file ~/sample.vtxt.yaml
+
+# Create references to bitwarden items and send them
+vtx bw -r "my bitwarden item to search for"
+vtx bw 
+```
