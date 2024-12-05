@@ -10,6 +10,8 @@ import Keys
 import VirtexBitwarden
 import VirtexConsole
 import Virtext
+import VirtextFile
+
 
 ### CLI Parser
 parser = argparse.ArgumentParser(description="Virtex")
@@ -21,8 +23,15 @@ parse_bw.add_argument("-r", "--ref", help='The bitwarden reference to type.' )
 # Console
 parse_console = subparsers.add_parser('console', help='Interactive terminal with remote text entry.')
 # Vtxt
-parse_lorem = subparsers.add_parser('vtxt', help='Replay HID automation files remotely.')
-parse_lorem.add_argument('file')
+parse_vtxt = subparsers.add_parser('vtxt', help='Replay HID automation files remotely.')
+parse_vtxt.add_argument('file')
+# Vtxt2
+parse_vtxt2 = subparsers.add_parser('vtxt2', help='Compact vtxt format 2.')
+parse_vtxt2.add_argument('file')
+# Cat
+parse_vtxt2 = subparsers.add_parser('cat', help='Echo a text file to the VHID.')
+parse_vtxt2.add_argument('file')
+
 args = parser.parse_args()
 
 if args.command in ["bw", "bitwarden"]:
@@ -33,6 +42,8 @@ if args.command in ["bw", "bitwarden"]:
 elif args.command == 'console':
     VirtexConsole.show_console()
 elif args.command == 'vtxt':
-    Virtext.execute_virtext_file(args.file)
+    Virtext.execute_step_file(args.file)
+elif args.command == 'cat':
+    VirtextFile.send_file(args.file)
 else:
     parser.print_help()

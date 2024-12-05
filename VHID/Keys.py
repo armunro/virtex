@@ -200,6 +200,16 @@ def save_file(filename: str, gui_wait=0.5):
     time.sleep(gui_wait)
     type_string(filename)
     press(bytes([0, 0, ENTER, *[0] * 5]))
+    
+def line_count(path):
+    assert os.path.exists(path)
+
+    num_lines = 0
+    with open(path) as f:
+        for line in f:
+            num_lines += 1
+    
+    return num_lines
 
 
 def type_file_to_notepad(filepath: str, filename=None, close=True, gui_wait=0.5):
@@ -209,7 +219,7 @@ def type_file_to_notepad(filepath: str, filename=None, close=True, gui_wait=0.5)
     # wait
     time.sleep(gui_wait)
     # get line count for progress bar
-    num_lines = HID.utils.line_count(filepath)
+    num_lines = line_count(filepath)
     # open file to read content
     with open(filepath, encoding='utf-8') as inp_file:
         # use generator with tqdm for progress visualization

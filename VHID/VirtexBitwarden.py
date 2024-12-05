@@ -59,12 +59,21 @@ def create_bwref(searchTerm):
     with open(outPath, 'w') as file:
         yaml.dump(newRef, file)
 
+
 def send_bitwarden_item():
     option,index = pick_item()
     env = Bitwarden.unlock_bitwarden()
     bwRefPath =  os.path.join(VirtexBitwarden.calc_ref_path(),  option)
     bwRef = load_bitwarden_ref(bwRefPath)
     template = pick_template()
+    secret = Bitwarden.get_item(bwRef["id"], env)
+    compiledString = replace_template_tokens(template, secret["login"]["username"], secret["login"]["password"])
+    Keys.type_string(compiledString)
+    
+def send_bitwarden_item2(ref, template):
+    env = Bitwarden.unlock_bitwarden()
+    bwRefPath =  os.path.join(VirtexBitwarden.calc_ref_path(),  ref)
+    bwRef = load_bitwarden_ref(bwRefPath)
     secret = Bitwarden.get_item(bwRef["id"], env)
     compiledString = replace_template_tokens(template, secret["login"]["username"], secret["login"]["password"])
     Keys.type_string(compiledString)
