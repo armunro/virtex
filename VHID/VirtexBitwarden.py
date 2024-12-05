@@ -26,13 +26,8 @@ def calc_ref_path():
 
 def pick_item():
     title = 'Select Bitwarden Item: '
-   
-    # Specify the directory
     directory =  calc_ref_path()
-    print(directory)
-    # Use glob to find all files with the .bwref.yaml extension
     files = glob.glob(os.path.join(directory, '*.bwref.yaml'))
-    print(directory)
     option,index = pick(files, title)
     return option,index
 

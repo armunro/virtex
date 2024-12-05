@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import yaml
 import time
 import Keys
@@ -12,9 +11,9 @@ def yaml_to_compact_format(input_yaml: str) -> str:
     for step in data.get("steps", []):
         command = step.pop("command", None)
         if command:
-            if step:  # If there are additional key-value pairs
+            if step:  
                 compact_steps.append({command: step})
-            else:  # If there's only the command
+            else: 
                 compact_steps.append({command: None})
     return yaml.dump({"steps": compact_steps}, default_flow_style=False, sort_keys=False)
 
@@ -24,15 +23,13 @@ def yaml_to_detailed_format(compact_yaml: str) -> str:
     detailed_steps = []
     for step in data.get("steps", []):
         for command, args in step.items():
-            print(command)
-            print(args)
-            if args is None:  # Command with no arguments
+            if args is None:  
                 detailed_steps.append({"command": command})
-            elif isinstance(args, dict):  # Command with arguments
+            elif isinstance(args, dict):
                 detailed_steps.append({"command": command, **args})
-            elif isinstance(args, str):  # Command with a single string argument
+            elif isinstance(args, str): 
                 detailed_steps.append({"command": command, "text": args})
-            elif isinstance(args, int):  # Command with a single string argument
+            elif isinstance(args, int):
                 detailed_steps.append({"command": command, "text": args})
     return yaml.dump({"steps": detailed_steps}, default_flow_style=False, sort_keys=False)
 
