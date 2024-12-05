@@ -31,3 +31,20 @@ vtx console --file ~/sample.vtxt.yaml
 vtx bw -r "my bitwarden item to search for"
 vtx bw 
 ```
+
+## REST API Usage
+```bash
+# STEP 1: Create localhost:5000->5000 SSH tunnel
+# Ensure virtex-serve is running
+systemctl status virtex-serve
+
+# Type a multi-line document
+POST http://localhost:5000/hid/kb/string
+...body...
+
+# Type a simple string
+GET http://localhost:5000/hid/kb/string?text=Hello World!
+
+# Run a vtxt file
+GET http://localhost:5000/hid/kb/vtext?file=ytest.vtext
+```
