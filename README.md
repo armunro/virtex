@@ -25,7 +25,7 @@ cd virtex/install
 vtx vtxt --file ~/sample.vtxt.yaml
 
 # Send text using an interactive terminal
-vtx console --file ~/sample.vtxt.yaml
+vtx console
 
 # Create references to bitwarden items and send them
 vtx bw -r "my bitwarden item to search for"
