@@ -1,14 +1,15 @@
 #!/usr/bin/python3
-from flask import Flask
-from flask import request
+from flask import Flask, request, send_from_directory
 import sys
 import os
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
 import Keys
 import Virtext
+import time
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder='HTTP/static', static_url_path='/assets')
 
 @app.route("/")
 def hello_world():
@@ -31,4 +32,8 @@ def run_vtext_get():
     script_dir = os.path.dirname(os.path.realpath(__file__))
     path = os.path.join(script_dir, "..","virtex-data", "vtext", text)
     Virtext.execute_step_file(path)
-    return f"SENT: {path}"
+    return f"RAN: {path}"
+
+@app.route('/static-html')
+def serve_static_html():
+    return send_from_directory('static', 'example.html')
