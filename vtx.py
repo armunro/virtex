@@ -26,8 +26,8 @@ parse_vtxt.add_argument('file')
 # Console
 parse_console = subparsers.add_parser('console', help='Interactive terminal with remote text entry.')
 # Bitwarden
-parse_bw = subparsers.add_parser('bitwarden', help='Automated BW item entry', aliases=['bw'] )
-parse_bw.add_argument("-r", "--ref", help='The bitwarden reference to type.' )
+parse_bw = subparsers.add_parser('bitwarden', help='Automated Bitwarden Entry', aliases=['bw'] )
+parse_bw.add_argument("-l", "--link", help='A search tearm to look for in Bitwarden' )
 
 
 

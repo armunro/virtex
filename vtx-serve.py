@@ -1,19 +1,26 @@
 #!/usr/bin/python3
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, send_from_directory, render_template
 import sys
+import VirtexGlobal
 import os
-
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
 import Keys
 import Virtext
 import time
 
 
-app = Flask(__name__, static_folder='HTTP/static', static_url_path='/assets')
+app = Flask(__name__, static_folder='HTTP/static', static_url_path='/assets', template_folder='HTTP/templates')
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World2!</p>"
+@app.route('/')
+def home():
+    data = {
+        "title": "Virtex Dashboard",
+        "heading": "Virtex Dashboard",
+        "bitwardenItems": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml"),
+        "vtextItems": VirtexGlobal.get_virtex_data_file("vtext", "vtext")
+    }
+    return render_template('dash.html', **data)
+
 
 @app.route('/hid/kb/string', methods=['POST'])
 def receive_string_post():
