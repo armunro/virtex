@@ -6,6 +6,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
 import Keys
 import Virtext
+import VirtexBitwarden
 import time
 
 
@@ -33,6 +34,13 @@ def receive_string_get():
     Keys.type_string(text)
     return f"SENT: {text}"
 
+@app.route('/hid/kb/bw', methods=['GET'])
+def bitwarden_enter_get():
+    ref = request.args.get('ref')
+    template = request.args.get('template')
+    VirtexBitwarden.send_bitwarden_item2(ref, template)
+    return f"SENT: {ref}"
+
 @app.route('/hid/kb/vtext', methods=['GET'])
 def run_vtext_get():
     text = request.args.get('file')
@@ -41,6 +49,19 @@ def run_vtext_get():
     Virtext.execute_step_file(path)
     return f"RAN: {path}"
 
-@app.route('/static-html')
-def serve_static_html():
-    return send_from_directory('static', 'example.html')
+@app.route('/items', methods=['GET'])
+def get_items():
+    return {
+        "bitwarden": {
+            "display": "Bitwarden",
+            "items": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml")
+        },
+        "vtext": {
+            "display": "VTEXT",
+            "items": VirtexGlobal.get_virtex_data_file("vtext", "vtext")
+        },
+        "files": {
+            "display": "Files",
+            "items": VirtexGlobal.get_virtex_data_file("files", "txt")
+        }
+    }

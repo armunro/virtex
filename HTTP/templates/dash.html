@@ -9,7 +9,8 @@
     <h1>{{ heading }}</h1>
     <ul>
         {% for item in bitwardenItems %}
-        <li>{{ item }}<a href="/hid/bw?ref={{ item }}"> vtx bw</a></li>
+        <li>{{ item }}<a href="/hid/kb/bw?ref={{ item }}&template={username}">User</a>
+            <a href="/hid/kb/bw?ref={{ item }}&template={password}">Password</a></li>
         {% endfor %}
     </ul>
     <ul>
