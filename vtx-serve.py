@@ -14,13 +14,7 @@ app = Flask(__name__, static_folder='HTTP/static', static_url_path='/assets', te
 
 @app.route('/')
 def home():
-    data = {
-        "title": "Virtex Dashboard",
-        "heading": "Virtex Dashboard",
-        "bitwardenItems": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml"),
-        "vtextItems": VirtexGlobal.get_virtex_data_file("vtext", "vtext")
-    }
-    return render_template('dash.html', **data)
+    return send_from_directory('HTTP/static', "dashboard.html")
 
 
 @app.route('/hid/kb/string', methods=['POST'])
@@ -49,19 +43,22 @@ def run_vtext_get():
     Virtext.execute_step_file(path)
     return f"RAN: {path}"
 
-@app.route('/items', methods=['GET'])
+@app.route('/hid/kb/methods', methods=['GET'])
 def get_items():
     return {
         "bitwarden": {
             "display": "Bitwarden",
+            "endpoint": "/hid/kb/bw",
             "items": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml")
         },
         "vtext": {
             "display": "VTEXT",
+            "endpoint": "/hid/kb/vtext",
             "items": VirtexGlobal.get_virtex_data_file("vtext", "vtext")
         },
         "files": {
             "display": "Files",
+            "endpoint": "/hid/kb/bw",
             "items": VirtexGlobal.get_virtex_data_file("files", "txt")
         }
     }
