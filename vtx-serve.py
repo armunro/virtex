@@ -43,6 +43,15 @@ def run_vtext_get():
     Virtext.execute_step_file(path)
     return f"RAN: {path}"
 
+@app.route('/hid/kb/templates', methods=['GET'])
+def get_templates():
+    return [
+        {"text": "Username", "value": "{username}"},
+        {"text": "Password", "value": "{password}"},
+        {"text": "Password[E]", "value": "{password}\n"},
+        {"text": "User[T]Pass[E]", "value": "{username}\t{password}\n"}
+    ]
+
 @app.route('/hid/kb/methods', methods=['GET'])
 def get_items():
     return {
