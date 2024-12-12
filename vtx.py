@@ -35,8 +35,8 @@ parse_bw.add_argument("-l", "--link", help='A search tearm to look for in Bitwar
 args = parser.parse_args()
 
 if args.command in ["bw", "bitwarden"]:
-    if(args.ref):
-        VirtexBitwarden.create_bwref(args.ref)
+    if(args.link):
+        VirtexBitwarden.create_bwref(args.link)
     else:
         VirtexBitwarden.send_bitwarden_item()
 elif args.command == 'console':

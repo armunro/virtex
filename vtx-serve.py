@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-from flask import Flask, request, send_from_directory, render_template
+from flask import Flask, request, Response, send_from_directory, render_template, stream_with_context
 import sys
 import VirtexGlobal
+import subprocess
 import os
+from urllib.parse import quote
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
 import Keys
 import Virtext
@@ -48,26 +50,43 @@ def get_templates():
     return [
         {"text": "Username", "value": "{username}"},
         {"text": "Password", "value": "{password}"},
-        {"text": "Password[E]", "value": "{password}\n"},
-        {"text": "User[T]Pass[E]", "value": "{username}\t{password}\n"}
+        {"text": "Password[E]", "value": "{password}" + quote("\n")},
+        {"text": "User[T]Pass[E]", "value": "{username}" + quote("\t") + "{password}" + quote("\n")}
     ]
 
 @app.route('/hid/kb/methods', methods=['GET'])
-def get_items():
+def get_methods():
     return {
         "bitwarden": {
             "display": "Bitwarden",
+            "icon": "fas fa-keyboard",
             "endpoint": "/hid/kb/bw",
             "items": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml")
         },
         "vtext": {
             "display": "VTEXT",
+            "icon": "fas fa-microphone",
             "endpoint": "/hid/kb/vtext",
             "items": VirtexGlobal.get_virtex_data_file("vtext", "vtext")
         },
         "files": {
             "display": "Files",
+            "icon": "fas fa-code",
             "endpoint": "/hid/kb/bw",
             "items": VirtexGlobal.get_virtex_data_file("files", "txt")
         }
     }
+    
+@app.route("/whatever", methods=["GET","POST"])
+def whatever():
+    def generate_output():
+        with subprocess.Popen(
+                "ping -c 5 8.8.8.8",
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True) as proc:
+            for line in proc.stdout:
+                yield line
+
+    return Response(generate_output(), mimetype='text/plain')

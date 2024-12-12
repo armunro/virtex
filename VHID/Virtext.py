@@ -35,6 +35,7 @@ def yaml_to_detailed_format(compact_yaml: str) -> str:
 
 
 def exec_virtext_step(step):
+    print(step)
     command = step["command"].lower()
     if (command == "print"):
         Keys.type_string(step["text"])
@@ -53,6 +54,6 @@ def execute_step_file(scriptPath):
         file_contents = file.read()
         detailedYaml = yaml_to_detailed_format(file_contents)
         data = yaml.safe_load(detailedYaml)
-        for step in alive_it(data["steps"]):  
+        for step in data["steps"]:  
             exec_virtext_step(step)
         
