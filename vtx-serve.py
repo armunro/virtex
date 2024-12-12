@@ -59,7 +59,7 @@ def get_methods():
     return {
         "bitwarden": {
             "display": "Bitwarden",
-            "icon": "fas fa-keyboard",
+            "icon": "fa-solid fa-shield-halved",
             "endpoint": "/hid/kb/bw",
             "items": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml")
         },

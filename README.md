@@ -22,13 +22,13 @@ cd virtex/install
 ## Command Line Usage
 ```bash
 # Run a VTXT step file 
-vtx vtxt --file ~/sample.vtxt.yaml
+vtx run --file ~/sample.vtxt.yaml
 
 # Send text using an interactive terminal
 vtx console
 
-# Create references to bitwarden items and send them
-vtx bw -r "my bitwarden item to search for"
+# Link references to bitwarden items and send them
+vtx bw -l "my bitwarden item to search for"
 vtx bw 
 ```
 
@@ -47,4 +47,10 @@ GET http://localhost:5000/hid/kb/string?text=Hello World!
 
 # Run a vtxt file
 GET http://localhost:5000/hid/kb/vtext?file=ytest.vtext
+
+# Run send a bitwarden secret
+GET http://localhost:5000/hid/kb/bw?ref=aspx.bwref.yaml&template={username}%09{password}%0A
+
+# Send a file in the `virtex-data/files`
+GET http://localhost:5000/hid/kb/bw?file=test2.txt
 ```
