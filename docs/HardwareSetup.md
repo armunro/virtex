@@ -18,9 +18,10 @@ Dietpi documentation recommends using either Balena Etcher or Rufus but both too
 Generate a public/private SSH key pair or use an existing public key.
 
 ### Configure Installation
+Insert the SD card into a card reader and open in explorer. The following files are used to configure the install, and overall system settings.
 
 #### dietpi.txt
-This file configures the main dietpi install settings. [More details and configuration option here](https://dietpi.com/docs/usage/#network-configuration)
+This file configures the main dietpi install settings. [More details and configuration option here.](https://dietpi.com/docs/usage/#network-configuration)
 ```
 AUTO_SETUP_KEYBOARD_LAYOUT=en
 AUTO_SETUP_TIMEZONE=America/Regina
@@ -43,11 +44,15 @@ The file is self explanitory but it contains an array structure of wireless netw
 ### First-boot Install
 Once the PI is started, the txt config files are never read again. Subsequent changes must be done in the shell on the device.
 
+NOTE: In the standard FLIRC grey/black case provided, The status LED can be difficult to see. It can be seen somewhat when looking into the device through the top power usb port.
+The process of the install and startup can be monitored by watching the status LED. Faster binking implies the startup scripts are still running.
+
 - Insert the MicroSD and connect a USB cable to the USB port labeled "USB" (The middle port)
 The automated install will take ~5m. Keep the device on as long as the LED is blinking or changing blink patterns consistently.
 - Locate the device's IP address by one of the following
 Check your router's DHCP leases or ARP tables for `VIRTEX-R1-A|B|C|...` 
+- If you know the devices MAC address, commands like `arp -a` can be helpful for matching the hardware address to the IP.
 - Use a tool like Nmap to scan the network for port 22:ssh 
-SSH into the device using the IP address
+SSH into the device using the IP address. Use the generated private key (optional) or use standard default credentials:
   - Username: `root` 
   - Password: `flyingkomodo`
