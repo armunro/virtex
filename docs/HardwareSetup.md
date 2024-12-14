@@ -20,20 +20,21 @@ Generate a public/private SSH key pair or use an existing public key.
 ### Configure Installation
 
 #### dietpi.txt
+This file configures the main dietpi install settings. [More details and configuration option here](https://dietpi.com/docs/usage/#network-configuration)
 ```
 AUTO_SETUP_KEYBOARD_LAYOUT=en
 AUTO_SETUP_TIMEZONE=America/Regina
 AUTO_SETUP_NET_WIFI_ENABLED=1 
 AUTO_SETUP_NET_WIFI_COUNTRY_CODE=CA
-AUTO_SETUP_NET_HOSTNAME=VIRTEX-R1-A
-AUTO_SETUP_HEADLESS=1
-AUTO_SETUP_SSH_PUBKEY=ssh... 
+AUTO_SETUP_NET_HOSTNAME=VIRTEX-R1-B
+AUTO_SETUP_HEADLESS=1 
+AUTO_SETUP_SSH_PUBKEY=ssh... # Put an SSH allowed public key here 
 AUTO_SETUP_AUTOMATED=1 
 AUTO_SETUP_GLOBAL_PASSWORD=flyingkomodo
 SURVEY_OPT_IN=0    
 ```
 #### dietpi-wifi.txt
-
+The file is self explanitory but it contains an array structure of wireless networks, the names (SSIDs) and passwords (WPA-PSK). It is important to have one known network configured before first boot. Wifi networks can be added later using the `dietpi-wifidb` command.
 ### Finalize
 
 - Safely eject the MicroSD card and insert it into the Pi Zero.

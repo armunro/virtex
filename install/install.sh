@@ -1,6 +1,6 @@
-dietpi-software install 9     # node
-dietpi-software install 17    # git
-dietpi-software install 130   # python
+/boot/dietpi/dietpi-software install 9     # node
+/boot/dietpi/dietpi-software install 17    # git
+/boot/dietpi/dietpi-software install 130   # python
 
 pip install pyyaml
 pip install pick
@@ -24,8 +24,14 @@ if ! grep -Fxq "libcomposite" /etc/modules; then
     echo "libcomposite" | sudo tee -a /etc/modules > /dev/null
 fi
 
-cp ./virtex.service /etc/systemd/system
-cp ./virtex-start-usb /usr/bin
+cp -f ./virtex.service /etc/systemd/system
+cp -f ./virtex-serve.service /etc/systemd/system
+cp -f ./virtex-start-usb /usr/bin
 
 chmod +x /etc/systemd/system/virtex.service
+chmod +x /etc/systemd/system/virtex.service
 chmod +x /usr/bin/virtex-start-usb
+
+systemctl daemon-reload
+systemctl enable virtex
+systemctl enable virtex-serve

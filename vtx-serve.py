@@ -59,19 +59,19 @@ def get_methods():
     return {
         "bitwarden": {
             "display": "Bitwarden",
-            "icon": "fa-solid fa-shield-halved",
+            "icon": "fa-solid fa-shield",
             "endpoint": "/hid/kb/bw",
             "items": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml")
         },
         "vtext": {
             "display": "VTEXT",
-            "icon": "fas fa-microphone",
+            "icon": "fas fa-code",
             "endpoint": "/hid/kb/vtext",
             "items": VirtexGlobal.get_virtex_data_file("vtext", "vtext")
         },
         "files": {
             "display": "Files",
-            "icon": "fas fa-code",
+            "icon": "fas fa-file",
             "endpoint": "/hid/kb/bw",
             "items": VirtexGlobal.get_virtex_data_file("files", "txt")
         }
