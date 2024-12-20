@@ -8,6 +8,8 @@ pip install colorama
 pip install tqdm
 pip install python-dotenv
 pip install flask
+pip install alive_progress
+
 
 # Add dtoverlay=dwc2 to /boot/config.txt if not already present
 if ! grep -Fxq "dtoverlay=dwc2" /boot/config.txt; then
@@ -23,6 +25,15 @@ fi
 if ! grep -Fxq "libcomposite" /etc/modules; then
     echo "libcomposite" | sudo tee -a /etc/modules > /dev/null
 fi
+# Add aliases to /bashrc
+if ! grep -Fxq "vtx.py" /root/.bashrc; then
+    echo "alias vtx='python3 /root/virtex/vtx.py'" | sudo tee -a /root/.bashrc > /dev/null
+fi
+
+mkdir /root/virtex-data
+mkdir /root/virtex-data/bitwarden
+mkdir /root/virtex-data/vtext
+mkdir /root/virtex-data/files
 
 cp -f ./virtex.service /etc/systemd/system
 cp -f ./virtex-serve.service /etc/systemd/system
