@@ -9,6 +9,7 @@ pip install tqdm
 pip install python-dotenv
 pip install flask
 pip install alive_progress
+npm install -g @bitwarden/cli
 
 
 # Add dtoverlay=dwc2 to /boot/config.txt if not already present
@@ -25,7 +26,7 @@ fi
 if ! grep -Fxq "libcomposite" /etc/modules; then
     echo "libcomposite" | sudo tee -a /etc/modules > /dev/null
 fi
-# Add aliases to /bashrc
+# Add aliases to .bashrc
 if ! grep -Fxq "vtx.py" /root/.bashrc; then
     echo "alias vtx='python3 /root/virtex/vtx.py'" | sudo tee -a /root/.bashrc > /dev/null
 fi
