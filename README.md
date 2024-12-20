@@ -14,6 +14,9 @@ Complete hardware setup is covered in the [Hardware Setup Guide](docs/HardwareSe
 
 ## Software Setup
 ```bash
+# Add your SSH key
+eval `ssh-agent`
+ssh-add ~/.ssh/GITHUB_KEY_FILE
 git clone git@github.com:armunro/virtex.git
 cd virtex/install
 ./install.sh
