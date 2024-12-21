@@ -2,15 +2,22 @@
 /boot/dietpi/dietpi-software install 17    # git
 /boot/dietpi/dietpi-software install 130   # python
 
-pip install pyyaml
-pip install pick
-pip install colorama
-pip install tqdm
-pip install python-dotenv
-pip install flask
-pip install alive_progress
-npm install -g @bitwarden/cli
+pip install pyyaml --root-user-action=ignore
+pip install pick --root-user-action=ignore
+pip install colorama --root-user-action=ignore
+pip install tqdm --root-user-action=ignore
+pip install python-dotenv --root-user-action=ignore
+pip install flask --root-user-action=ignore
+pip install alive_progress --root-user-action=ignore
 
+PACKAGE_NAME="@bitwarden/cli"
+if npm list -g --depth=0 | grep -q "$PACKAGE_NAME@"; then
+  echo "$PACKAGE_NAME is already installed."
+else
+  echo "$PACKAGE_NAME is not installed. Installing..."
+  npm install -g "$PACKAGE_NAME"
+  echo "$PACKAGE_NAME has been installed."
+fi
 
 # Add dtoverlay=dwc2 to /boot/config.txt if not already present
 if ! grep -Fxq "dtoverlay=dwc2" /boot/config.txt; then
@@ -31,10 +38,12 @@ if ! grep -Fxq "vtx.py" /root/.bashrc; then
     echo "alias vtx='python3 /root/virtex/vtx.py'" | sudo tee -a /root/.bashrc > /dev/null
 fi
 
-mkdir /root/virtex-data
-mkdir /root/virtex-data/bitwarden
-mkdir /root/virtex-data/vtext
-mkdir /root/virtex-data/files
+mkdir -p /root/virtex-data
+mkdir -p /root/virtex-data/bitwarden
+touch /root/virtex-data/bitwarden/master.bwpass.txt
+mkdir -p /root/virtex-data/vtext
+cp -f /root/virtex/install/sample-vtext/* /root/virtex-data/vtext
+mkdir -p /root/virtex-data/files
 
 cp -f ./virtex.service /etc/systemd/system
 cp -f ./virtex-serve.service /etc/systemd/system

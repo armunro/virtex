@@ -1,0 +1,4 @@
+steps:
+  - launch: calc
+  - sleep: 2
+  - print: 6*6=

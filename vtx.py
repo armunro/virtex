@@ -18,8 +18,8 @@ parser = argparse.ArgumentParser(description="Virtex")
 subparsers = parser.add_subparsers(dest='command', help='Subcommands')
 
 # Cat
-parse_vtxt2 = subparsers.add_parser('cat', help='Echo a text file to the VHID.')
-parse_vtxt2.add_argument('file')
+parse_vtxt = subparsers.add_parser('cat', help='Echo a text file to the VHID.')
+parse_vtxt.add_argument('file')
 # Vtxt
 parse_vtxt = subparsers.add_parser('run', help='Replay HID automation files remotely.')
 parse_vtxt.add_argument('file')
