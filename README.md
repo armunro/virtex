@@ -35,6 +35,9 @@ vtx bw -l "my bitwarden item to search for"
 vtx bw 
 ```
 
+## Web UI
+![Alt text](docs/webui.png "Image Title")
+
 ## REST API Usage
 ```bash
 # STEP 1: Create localhost:5000->5000 SSH tunnel
