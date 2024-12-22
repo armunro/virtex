@@ -1,13 +1,13 @@
 # virtex
-<img src ='https://github.com/user-attachments/assets/8c0a127d-172a-4b69-ba02-36b4c11f8f58' style='height:200px'/>
-<img src ='https://github.com/user-attachments/assets/e4667d71-ee57-4f77-94bc-dcc0983403da' style='height:200px'/>
-
 
 The VIRTEX Bridge device is a multifunction USB device that runs on the Raspberry Pi Zero 2 to provide the following capabilities:
 - Enable Wi-Fi access as either a Host or Access Point
 - Emulate peripheral USB devices like keyboards, mice, network adapters
 - Invoke virtual hardware functions remotely with REST API and command line functions.
 - Provide a developer-friendly hosting platform for side-loading useful sotware.
+
+![Alt text](docs/map.svg "Virtex Web UI")
+
 
 ## Hardware Setup
 Complete hardware setup is covered in the [Hardware Setup Guide](docs/HardwareSetup.md).
@@ -36,7 +36,8 @@ vtx bw
 ```
 
 ## Web UI
-![Alt text](docs/webui.png "Image Title")
+The WebUI is hosted from the `virtex-serve` service. It is currenty only hosted on `http://localhost:5000`. Until better HTTP security is implemented, SSH tunnels are recommended to facilitate remote access of the WebUI. `local 5000 -> localhost:5000`
+![Alt text](docs/webui.png "Virtex Web UI")
 
 ## REST API Usage
 ```bash
