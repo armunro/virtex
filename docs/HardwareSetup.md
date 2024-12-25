@@ -36,6 +36,7 @@ AUTO_SETUP_GLOBAL_PASSWORD=flyingkomodo
 AUTO_SETUP_INSTALL_SOFTWARE_ID=9               # Node.js
 AUTO_SETUP_INSTALL_SOFTWARE_ID=17              # Git
 AUTO_SETUP_INSTALL_SOFTWARE_ID=130             # Python
+AUTO_SETUP_INSTALL_SOFTWARE_ID=152             # Avahi - mDNS
 SURVEY_OPT_IN=0    
 ```
 #### dietpi-wifi.txt
@@ -68,7 +69,8 @@ aWIFI_CERT[0]=''
 # Entry 1
 # - WiFi SSID: required, case sensitive
 aWIFI_SSID[1]=''
-
+...
+...
 ```
 
 ### Finalize
@@ -83,12 +85,12 @@ The process of the install and startup can be monitored by watching the status L
 
 **NOTE 2: If the WiFi settings have been set corrctly, you should be able to SSH connect to the device within the first 1-2 minutes. The login screen will show that the installer is still running.**
 
-- Insert the MicroSD and connect a USB cable to the USB port labeled "USB" (The middle port)
-The automated install will take ~5m. Keep the device on as long as the LED is blinking or changing blink patterns consistently.
-- Locate the device's IP address by one of the following
-Check your router's DHCP leases or ARP tables for `VIRTEX-R1-A|B|C|...` 
-- If you know the devices MAC address, commands like `arp -a` can be helpful for matching the hardware address to the IP.
-- Use a tool like Nmap to scan the network for port 22:ssh 
+Insert the MicroSD and connect a USB cable to the USB port labeled "USB" (The middle port). The automated install will take ~5m. Keep the device on as long as the LED is blinking or changing blink patterns consistently.
+
+## Locating the device on your network
+If you have access to your router, locating the `VIRTEX-1-A` device in your "connected devices" or "dhcp leases" is fairly simple. To simplify discovery, in locations where that isn't possible, the `avahi-daemon` is installed to provide multicast DNS (mDNS) disovery. You should be able to locate the IP with: `ping VIRTEX-R1-A.local`.
+
+## Connect to the device
 SSH into the device using the IP address. Use the generated private key (optional) or use standard default credentials:
   - Username: `root` 
   - Password: `flyingkomodo`
