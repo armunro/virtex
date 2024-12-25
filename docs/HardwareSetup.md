@@ -1,5 +1,5 @@
 ## Requirements 
-This is an unattended install. You will require a computer write the initial image to the MicroSD card and subsequently manage and access it. This computer requires:
+**This is an unattended install that creates a headless, networked device.** Mini HDMI is optional You will require a computer write the initial image to the MicroSD card and subsequently manage and access it. This computer requires:
 - MicroSD Card Reader
 - Balena Etcher or Rufus
 - XZip
@@ -12,7 +12,7 @@ Dietpi documentation recommends using either Balena Etcher or Rufus but both too
 - Download DietPi for Raspberry Pi 3/4/5 + Zero 2.
 - Download Balena Etcher.
 - Extract the DietPi .xz  archive.
-- Use Etcher to write the *.iso file that was extracted.
+- Use Etcher to write the \*.iso \*.img file that was extracted.
 
 ### Generate SSH Key
 Generate a public/private SSH key pair or use an existing public key.
