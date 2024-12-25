@@ -81,9 +81,8 @@ aWIFI_SSID[1]=''
 Once the PI is started, the txt config files are never read again. Subsequent changes must be done in the shell on the device.
 
 **NOTE: In the standard FLIRC grey/black case provided, The status LED can be difficult to see. It can be seen somewhat when looking into the device through the top power usb port.
-The process of the install and startup can be monitored by watching the status LED. Faster binking implies the startup scripts are still running.**]
+The process of the install and startup can be monitored by watching the status LED. Faster binking implies the startup scripts are still running.**
 
-**NOTE 2: If the WiFi settings have been set corrctly, you should be able to SSH connect to the device within the first 1-2 minutes. The login screen will show that the installer is still running.**
 
 Insert the MicroSD and connect a USB cable to the USB port labeled "USB" (The middle port). The automated install will take ~5m. Keep the device on as long as the LED is blinking or changing blink patterns consistently.
 
@@ -92,6 +91,9 @@ If you have access to your router, locating the `VIRTEX-1-A` device in your "con
 
 ## Connect to the device
 SSH into the device using the IP address. Use the generated private key (optional) or use standard default credentials:
+
+**NOTE**: If the WiFi settings have been set corrctly, you should be able to SSH connect to the device within the first 1-2 minutes. The login screen will showthat the installer is still running.
+
   - Username: `root` 
   - Password: `flyingkomodo`
  
