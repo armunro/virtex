@@ -20,7 +20,7 @@ Generate a public/private SSH key pair or use an existing public key.
 ### Configure Installation
 Insert the SD card into a card reader and open in explorer. The following files are used to configure the install, and overall system settings.
 
-#### dietpi.txt
+ #### dietpi.txt
 This file configures the main dietpi install settings. [More details and configuration option here.](https://dietpi.com/docs/usage/#network-configuration)
 ```python
 AUTO_SETUP_KEYBOARD_LAYOUT=en
@@ -90,10 +90,8 @@ Insert the MicroSD and connect a USB cable to the USB port labeled "USB" (The mi
 If you have access to your router, locating the `VIRTEX-1-A` device in your "connected devices" or "dhcp leases" is fairly simple. To simplify discovery, in locations where that isn't possible, the `avahi-daemon` is installed to provide multicast DNS (mDNS) disovery. You should be able to locate the IP with: `ping VIRTEX-R1-A.local`.
 
 ## Connect to the device
-SSH into the device using the IP address. Use the generated private key (optional) or use standard default credentials:
-
-**NOTE**: If the WiFi settings have been set corrctly, you should be able to SSH connect to the device within the first 1-2 minutes. The login screen will showthat the installer is still running.
-
+ If the WiFi settings have been set corrctly, you should be able to SSH connect to the device within the first 1-2 minutes. The login screen will showthat the installer is still running.
+ SSH into the device using the IP address. Use the generated private key (optional) or use standard default credentials:
   - Username: `root` 
   - Password: `flyingkomodo`
  
