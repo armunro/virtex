@@ -8,7 +8,7 @@ from urllib.parse import quote
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
 import Keys
 import Virtext
-import VirtexBitwarden
+import Bitwarden
 import time
 
 
@@ -34,7 +34,7 @@ def receive_string_get():
 def bitwarden_enter_get():
     ref = request.args.get('ref')
     template = request.args.get('template')
-    VirtexBitwarden.send_bitwarden_item2(ref, template)
+    Bitwarden.send_bitwarden_item2(ref, template)
     return f"SENT: {ref}"
 
 @app.route('/hid/kb/vtext', methods=['GET'])

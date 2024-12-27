@@ -1,7 +1,7 @@
 import yaml
 import time
 import Keys
-import VirtexBitwarden
+import Bitwarden
 from alive_progress import alive_it
 
 def yaml_to_compact_format(input_yaml: str) -> str:
@@ -44,7 +44,7 @@ def exec_virtext_step(step):
     elif (command == "sleep"):
         time.sleep(float(step["text"]))
     elif (command == "bitwarden"):
-        VirtexBitwarden.send_bitwarden_item2(step["ref"], step["template"])
+        Bitwarden.send_bitwarden_item2(step["ref"], step["template"])
     else:
         print("Unknown command "+ command)
 

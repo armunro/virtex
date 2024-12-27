@@ -7,7 +7,7 @@ import sys
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
 import Keys
-import VirtexBitwarden
+import Bitwarden
 import VirtexConsole
 import Virtext
 import VirtextFile
@@ -36,9 +36,9 @@ args = parser.parse_args()
 
 if args.command in ["bw", "bitwarden"]:
     if(args.link):
-        VirtexBitwarden.create_bwref(args.link)
+        Bitwarden.create_bwref(args.link)
     else:
-        VirtexBitwarden.send_bitwarden_item()
+        Bitwarden.send_bitwarden_item()
 elif args.command == 'console':
     VirtexConsole.show_console()
 elif args.command == 'run':
