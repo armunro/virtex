@@ -1,23 +1,24 @@
 #!/usr/bin/python3
 from flask import Flask, request, Response, send_from_directory, render_template, stream_with_context
 import sys
-import VirtexGlobal
 import subprocess
 import os
-from urllib.parse import quote
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
-import Keys
-import Virtext
-import Bitwarden
 import time
+from urllib.parse import quote
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".." ))
+from VTX import VirtexGlobal
+from VTXHid import Keys
+from VTXHid import Virtext
+from VTXBitwarden import Bitwarden
 
 
-app = Flask(__name__, static_folder='HTTP/static', static_url_path='/assets', template_folder='HTTP/templates')
+
+
+app = Flask(__name__, static_folder='static', static_url_path='/assets', template_folder='templates')
 
 @app.route('/')
 def home():
-    return send_from_directory('HTTP/static', "dashboard.html")
-
+    return send_from_directory('static', "dashboard.html")
 
 @app.route('/hid/kb/string', methods=['POST'])
 def receive_string_post():
@@ -41,7 +42,7 @@ def bitwarden_enter_get():
 def run_vtext_get():
     text = request.args.get('file')
     script_dir = os.path.dirname(os.path.realpath(__file__))
-    path = os.path.join(script_dir, "..","virtex-data", "vtext", text)
+    path = os.path.join(script_dir, "..", "..","virtex-data", "vtext", text)
     Virtext.execute_step_file(path)
     return f"RAN: {path}"
 

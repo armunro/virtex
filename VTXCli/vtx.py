@@ -5,12 +5,14 @@ import os
 import sys
 
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"VHID" ))
-import Keys
-import Bitwarden
-import VirtexConsole
-import Virtext
-import VirtextFile
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" ))
+from VTX import VirtexGlobal
+from VTXHid import Keys
+from VTXHid import Virtext
+from VTXBitwarden import Bitwarden
+from VTXCli import VirtexConsole
+from VTXHid import Virtext
+from VTXHid import VirtextFile
 
 
 ### CLI Parser

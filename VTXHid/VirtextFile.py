@@ -1,4 +1,8 @@
-import Keys
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" ))
+
+from VTXHid import Keys
 from alive_progress import alive_it
 
 def send_file(path):

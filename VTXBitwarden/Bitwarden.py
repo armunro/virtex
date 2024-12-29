@@ -4,10 +4,10 @@ import time
 import json
 import subprocess
 import yaml
-import Bitwarden
 from pick import pick
 from colorama import Fore, Back, Style
-import Keys
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" ))
+from VTXHid import Keys
 import glob
 from dotenv import load_dotenv
 

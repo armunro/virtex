@@ -21,6 +21,20 @@ git clone git@github.com:armunro/virtex.git
 cd virtex/install
 ./install.sh
 ```
+## Directory Structures
+```bash
+/root
+  /virtex
+    /VTX         # Root/Common code
+    /VTXCli      # Command line tools
+    /VTXHid      # Keyboard/Mouse entry methods
+    /VTXHttp     # HTTP Control API
+```
+
+## Web UI
+The WebUI is hosted from the `virtex-serve` service. It is currenty only hosted on `http://localhost:5000`. Until better HTTP security is implemented, SSH tunnels are recommended to facilitate remote access of the WebUI. `local 5000 -> localhost:5000`
+![Alt text](docs/webui.png "Virtex Web UI")
+
 
 ## Command Line Usage
 ```bash
@@ -34,10 +48,6 @@ vtx console
 vtx bw -l "my bitwarden item to search for"
 vtx bw 
 ```
-
-## Web UI
-The WebUI is hosted from the `virtex-serve` service. It is currenty only hosted on `http://localhost:5000`. Until better HTTP security is implemented, SSH tunnels are recommended to facilitate remote access of the WebUI. `local 5000 -> localhost:5000`
-![Alt text](docs/webui.png "Virtex Web UI")
 
 ## REST API Usage
 ```bash
