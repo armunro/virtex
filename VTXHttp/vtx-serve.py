@@ -62,21 +62,33 @@ def get_methods():
             "display": "Bitwarden",
             "icon": "fa-solid fa-shield",
             "endpoint": "/hid/kb/bw",
+            "source": "bitwarden",
+            "extenion": "bwref.yaml",
             "items": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml")
         },
         "vtext": {
             "display": "VTEXT",
             "icon": "fas fa-code",
             "endpoint": "/hid/kb/vtext",
+            "source": "vtext",
+            "extenion": "vtext",
             "items": VirtexGlobal.get_virtex_data_file("vtext", "vtext")
         },
         "files": {
             "display": "Files",
             "icon": "fas fa-file",
             "endpoint": "/hid/kb/bw",
+            "source": "files",
+            "extenion": "txt",
             "items": VirtexGlobal.get_virtex_data_file("files", "txt")
         }
     }
+    
+@app.route('/files', methods=['GET'])
+def run_file_get():
+    source = request.args.get('source')
+    extension = request.args.get('extension')
+    return VirtexGlobal.get_virtex_data_file(source, extension)
     
 @app.route("/whatever", methods=["GET","POST"])
 def whatever():

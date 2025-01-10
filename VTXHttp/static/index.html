@@ -6,65 +6,8 @@
   <title>Vue.js Dock Bar</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      height: 100vh;
-    }
-    #app {
-      display: flex;
-      flex-grow: 1;
-    }
-    .bar-header{
-        background-color: #2c3e50;
-        color: white
-    }
-    .dock-bar {
-      width: 60px;
-      background: #2c3e50;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 0;
-    }
-    .dock-bar button {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 24px;
-      margin: 10px 0;
-      cursor: pointer;
-    }
-    .dock-bar button.active {
-      color: #3498db;
-    }
-    .content {
-      flex-grow: 1;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .panel {
-      background: #ecf0f1;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
-    }
-    .panel h2 {
-      margin-bottom: 20px;
-    }
-    .panel p {
-      margin: 10px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+  
 </head>
 <body>
   <div id="app">
@@ -95,33 +38,12 @@
         return {
           methods: [
             {
-              name: 'Text Method 1',
+              name: 'Text  Method 1',
               icon: 'fas fa-keyboard',
               item: 'Keyboard Input',
               cliCommand: 'input-keyboard',
               restEndpoint: '/api/text-method-1',
-            },
-            {
-              name: 'Text Method 2',
-              icon: 'fas fa-microphone',
-              item: 'Voice Input',
-              cliCommand: 'input-voice',
-              restEndpoint: '/api/text-method-2',
-            },
-            {
-              name: 'Text Method 3',
-              icon: 'fas fa-code',
-              item: 'Code Input',
-              cliCommand: 'input-code',
-              restEndpoint: '/api/text-method-3',
-            },
-            {
-              name: 'Text Method 4',
-              icon: 'fas fa-pen',
-              item: 'Stylus Input',
-              cliCommand: 'input-stylus',
-              restEndpoint: '/api/text-method-4',
-            },
+            }
           ],
           activeMethod: null,
         };
