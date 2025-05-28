@@ -1,0 +1,7 @@
+steps:
+  - launch: msedge
+  - sleep: 2
+  - print: "https://google.ca\n"
+  - sleep: 1
+  - print: How to help a friend.
+
