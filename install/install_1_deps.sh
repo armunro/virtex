@@ -11,12 +11,3 @@ pip install tqdm --root-user-action=ignore
 pip install python-dotenv --root-user-action=ignore
 pip install flask --root-user-action=ignore
 pip install alive_progress --root-user-action=ignore
-
-PACKAGE_NAME="@bitwarden/cli"
-if npm list -g --depth=0 | grep -q "$PACKAGE_NAME@"; then
-  echo "$PACKAGE_NAME is already installed."
-else
-  echo "$PACKAGE_NAME is not installed. Installing..."
-  npm install -g "$PACKAGE_NAME"
-  echo "$PACKAGE_NAME has been installed."
-fi

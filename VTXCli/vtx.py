@@ -10,7 +10,6 @@ sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" )
 from VTX import VirtexGlobal
 from VTXHid import Keys
 from VTXHid import Virtext
-from VTXBitwarden import Bitwarden
 from VTXCli import VirtexConsole
 from VTXHid import Virtext
 from VTXHid import VirtextFile
@@ -30,21 +29,13 @@ parse_vtxt = subparsers.add_parser('run', help='Replay HID automation files remo
 parse_vtxt.add_argument('file')
 # Console
 parse_console = subparsers.add_parser('console', help='Interactive terminal with remote text entry.')
-# Bitwarden
-parse_bw = subparsers.add_parser('bitwarden', help='Automated Bitwarden Entry', aliases=['bw'] )
-parse_bw.add_argument("-l", "--link", help='A search tearm to look for in Bitwarden' )
 
 
 
 
 args = parser.parse_args()
 
-if args.command in ["bw", "bitwarden"]:
-    if(args.link):
-        Bitwarden.create_bwref(args.link)
-    else:
-        Bitwarden.send_bitwarden_item()
-elif args.command == 'console':
+if args.command == 'console':
     VirtexConsole.show_console()
 elif args.command == 'update':
     VirtexConsole.show_console() #todo

@@ -141,14 +141,7 @@
         <li class="list-group-item"><b>ITEM: </b> {{ selected.item }}</li>
         <li class="list-group-item"><b>CLI: </b><code class=" border-1 rounded-3 ">vtx {{ selected.method }} {{ selected.item }}</code></li>
         <li class="list-group-item"><b>Endpoint: </b><code class=" border-1 rounded-3 ">{{ selectedEndpoint}} </code></li>
-        <li class="list-group-item" v-if="selected.method != null && selected.method === 'bitwarden'"><b>Template: </b>
-          <select id="template" v-model="selectedTemplate">
-            <option v-for="template in templates" :key="template.value" :value="template.value">
-              {{ template.text }}
-            </option>
-          </select>
-          
-        </li>
+
         <li class="list-group-item"><button class="btn btn-lg btn-success" @click="runItem">Run</button></li>
       </ul>
     </div>
@@ -161,11 +154,6 @@
       data() {
         return {
           methods: {
-            "bitwarden": {
-              "icon": "",
-              "display": "Bitwarden",
-              "items": []
-            },
             "files": {
               "icon": "",
               "display": "Files",

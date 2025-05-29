@@ -6,7 +6,6 @@ The VIRTEX Bridge device is a multifunction USB device that runs on the Raspberr
 - Invoke virtual hardware functions remotely with REST API and command line functions.
 - Provide a developer-friendly hosting platform for side-loading useful sotware.
 
-![Alt text](docs/map.svg "Virtex Web UI")
 
 
 ## Hardware Setup
@@ -44,10 +43,7 @@ vtx run --file ~/sample.vtxt.yaml
 # Send text using an interactive terminal
 vtx console
 
-# Link references to bitwarden items and send them
-vtx bw -l "my bitwarden item to search for"
-vtx bw 
-```
+
 
 ## REST API Usage
 ```bash

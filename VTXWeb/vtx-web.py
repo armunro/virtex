@@ -9,7 +9,6 @@ sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".." ))
 from VTX import VirtexGlobal
 from VTXHid import Keys
 from VTXHid import Virtext
-from VTXBitwarden import Bitwarden
 
 
 
@@ -31,12 +30,6 @@ def receive_string_get():
     Keys.type_string(text)
     return f"SENT: {text}"
 
-@app.route('/hid/kb/bw', methods=['GET'])
-def bitwarden_enter_get():
-    ref = request.args.get('ref')
-    template = request.args.get('template')
-    Bitwarden.send_bitwarden_item2(ref, template)
-    return f"SENT: {ref}"
 
 @app.route('/hid/kb/vtext', methods=['GET'])
 def run_vtext_get():
@@ -58,12 +51,6 @@ def get_templates():
 @app.route('/hid/kb/methods', methods=['GET'])
 def get_methods():
     return {
-        "bitwarden": {
-            "display": "Bitwarden",
-            "icon": "fa-solid fa-shield",
-            "endpoint": "/hid/kb/bw",
-            "items": VirtexGlobal.get_virtex_data_file("bitwarden", "bwref.yaml")
-        },
         "vtext": {
             "display": "VTEXT",
             "icon": "fas fa-code",

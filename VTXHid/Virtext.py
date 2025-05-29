@@ -46,8 +46,6 @@ def exec_virtext_step(step):
         Keys.launch_app(step["text"])
     elif (command == "sleep"):
         time.sleep(float(step["text"]))
-    elif (command == "bitwarden"):
-        Bitwarden.send_bitwarden_item2(step["ref"], step["template"])
     else:
         print("Unknown command "+ command)
 
