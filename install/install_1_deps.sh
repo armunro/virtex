@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+  #!/usr/bin/bash
 
 /boot/dietpi/dietpi-software install 9     # node
 /boot/dietpi/dietpi-software install 17    # git
