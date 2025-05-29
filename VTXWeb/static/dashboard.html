@@ -222,12 +222,8 @@
           this.getEndpoint(this.methods[this.selected.method])
         },
         getEndpoint(method){
-          if(method.display == "Bitwarden")
-          {
-            this.selected.endpoint = method.endpoint + "?ref=" + this.selected.item + "&template=" + this.selectedTemplate + "\n";
-            return this.selected.endpoint;
-          }
-          else if (method.display == "VTEXT"){
+
+         if (method.display == "VTEXT"){
             this.selected.endpoint = method.endpoint + "?file=" + this.selected.item;
             return this.selected.endpoint;
           }

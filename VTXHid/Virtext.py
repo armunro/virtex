@@ -4,7 +4,6 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" ))
 from VTXHid import Keys
-from VTXBitwarden import Bitwarden
 from alive_progress import alive_it
 
 def yaml_to_compact_format(input_yaml: str) -> str:
