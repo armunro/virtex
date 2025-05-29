@@ -1,6 +1,7 @@
 #!/usr/bin/bash
-bash ./1_deps/install_1.sh
-bash ./2_hardware-config/install_2.sh
-bash ./3_services/install_3.sh
-bash ./4_vtx-root/install_4.sh
-bash ./5_samples/install_5.sh
+bash ./install_1_deps.sh
+bash ./install_2_hardware.sh
+bash ./install_3_services.sh
+bash ./install_4_scaffold.sh
+bash ./install_5_samples.sh
+
