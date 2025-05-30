@@ -6,9 +6,9 @@ import os
 import time
 from urllib.parse import quote
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".." ))
-from VTX import VirtexGlobal
-from VTXHid import Keys
-from VTXHid import Virtext
+import VirtexGlobal
+import Keys
+import Virtext
 
 
 

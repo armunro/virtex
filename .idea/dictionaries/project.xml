@@ -4,6 +4,7 @@
       <w>dtoverlay</w>
       <w>libcomposite</w>
       <w>virtex</w>
+      <w>virtext</w>
     </words>
   </dictionary>
 </component>
