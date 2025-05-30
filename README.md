@@ -24,23 +24,20 @@ cd virtex/install
 ```bash
 /root
   /virtex
-    /VTX         # Root/Common code
-    /VTXCli      # Command line tools
-    /VTXHid      # Keyboard/Mouse entry methods
-    /VTXHttp     # HTTP Control API
+    /src         # All of the code
+      /api         # HTTP Api for invoking functions
+      /cli         # Command line tools for automation
+      /common      # Shared code
+      /ui          # Precompiled web frontend
 ```
-
-
 
 ## Command Line Usage
 ```bash
 # Run a VTXT step file 
-vtx run ./sample.vtext
+vtx run /root/virtex-data/websearch_sample.vtext
 
 # Send text using an interactive terminal
 vtx console
-
-
 
 ## REST API Usage
 ```bash
