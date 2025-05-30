@@ -4,15 +4,15 @@ import argparse
 import subprocess
 import os
 import sys
+import VirtexConsole
 
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" ))
-from VTX import VirtexGlobal
-from VTXHid import Keys
-from VTXHid import Virtext
-from VTXCli import VirtexConsole
-from VTXHid import Virtext
-from VTXHid import VirtextFile
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
+import VirtexGlobal
+import Keys
+import Virtext
+import Virtext
+import VirtextFile
 
 
 ### CLI Parser
