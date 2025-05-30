@@ -35,7 +35,7 @@ def receive_string_get():
 def run_vtext_get():
     text = request.args.get('file')
     script_dir = os.path.dirname(os.path.realpath(__file__))
-    path = os.path.join(script_dir, "..", "..","virtex-data", "vtext", text)
+    path = os.path.join(script_dir, "..", "..", ".." ,"virtex-data", "vtext", text)
     Virtext.execute_step_file(path)
     return f"RAN: {path}"
 
