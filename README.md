@@ -30,15 +30,12 @@ cd virtex/install
     /VTXHttp     # HTTP Control API
 ```
 
-## Web UI
-The WebUI is hosted from the `virtex-serve` service. It is currenty only hosted on `http://localhost:5000`. Until better HTTP security is implemented, SSH tunnels are recommended to facilitate remote access of the WebUI. `local 5000 -> localhost:5000`
-![Alt text](docs/webui.png "Virtex Web UI")
 
 
 ## Command Line Usage
 ```bash
 # Run a VTXT step file 
-vtx run --file ~/sample.vtxt.yaml
+vtx run ./sample.vtext
 
 # Send text using an interactive terminal
 vtx console

@@ -16,5 +16,5 @@ if ! grep -Fxq "libcomposite" /etc/modules; then
 fi
 # Add aliases to .bashrc
 if ! grep -Fxq "vtx.py" /root/.bashrc; then
-    echo "alias vtx='python3 /root/virtex/VTXCli/vtx.py'" | sudo tee -a /root/.bashrc > /dev/null
+    echo "alias vtx='python3 /root/virtex/src/cli/vtx.py'" | sudo tee -a /root/.bashrc > /dev/null
 fi
