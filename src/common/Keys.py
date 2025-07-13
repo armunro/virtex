@@ -117,7 +117,6 @@ CHARS = {
     'x': bytes([0, 0, KEY_X, *[0] * 5]), 'X': bytes([LEFT_SHIFT, 0, KEY_X, *[0] * 5]),
     'y': bytes([0, 0, KEY_Y, *[0] * 5]), 'Y': bytes([LEFT_SHIFT, 0, KEY_Y, *[0] * 5]),
     'z': bytes([0, 0, KEY_Z, *[0] * 5]), 'Z': bytes([LEFT_SHIFT, 0, KEY_Z, *[0] * 5]),
-
     '1': bytes([0, 0, KEY_1, *[0] * 5]), '!': bytes([LEFT_SHIFT, 0, KEY_1, *[0] * 5]),
     '2': bytes([0, 0, KEY_2, *[0] * 5]), '@': bytes([LEFT_SHIFT, 0, KEY_2, *[0] * 5]),
     '3': bytes([0, 0, KEY_3, *[0] * 5]), '#': bytes([LEFT_SHIFT, 0, KEY_3, *[0] * 5]),
@@ -128,7 +127,6 @@ CHARS = {
     '8': bytes([0, 0, KEY_8, *[0] * 5]), '*': bytes([LEFT_SHIFT, 0, KEY_8, *[0] * 5]),
     '9': bytes([0, 0, KEY_9, *[0] * 5]), '(': bytes([LEFT_SHIFT, 0, KEY_9, *[0] * 5]),
     '0': bytes([0, 0, KEY_0, *[0] * 5]), ')': bytes([LEFT_SHIFT, 0, KEY_0, *[0] * 5]),
-
     '\n': bytes([0, 0, ENTER, *[0] * 5]),
     'ESC': bytes([0, 0, ESC, *[0] * 5]),
     'BACKSPACE': bytes([0, 0, BACKSPACE, *[0] * 5]),

@@ -55,7 +55,6 @@ GET http://localhost:5000/hid/kb/string?text=Hello World!
 # Run a vtxt file
 GET http://localhost:5000/hid/kb/vtext?file=ytest.vtext
 
-
 # Send a file in the `virtex-data/files`
 GET http://localhost:5000/hid/kb/bw?file=test2.txt
 ```
