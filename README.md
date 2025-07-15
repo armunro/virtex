@@ -20,6 +20,18 @@ git clone git@github.com:armunro/virtex.git
 cd virtex/install
 ./install.sh
 ```
+## Main Service control
+```bash
+# Enable and start the WebUI (Not needed after install)
+systemctl enable virtex-web
+systemctl start virtex-web
+
+# Enable and start the HID service (Keyboard+Mouse) (Not needed after install)
+systemctl enable virtex-hid
+systemctl start virtex-hid
+```
+## How Does it Work?
+`libcomposite` is a Linux kernel module that can emulate USB devices. These virtual usb devices are sometimes referred to as 'gadgets'. When supported by the Raspberry Pi Zero 2 and other Single Board Computers (SBCs), we have a robust and _relatively_ simple platform for tooling. Virtex adds simple python APIs, functions and interfaces.
 ## Directory Structures
 ```bash
 /root
