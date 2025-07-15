@@ -52,7 +52,7 @@ def example_usage():
     time.sleep(0.2)
 
     # Scroll down
-    scroll(-1)
+    scroll(1)
 
 if __name__ == '__main__':
     if not os.path.exists(HID_MOUSE):
