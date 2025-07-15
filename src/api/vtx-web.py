@@ -5,6 +5,9 @@ import subprocess
 import os
 import time
 from urllib.parse import quote
+
+import src.common.Virtext
+
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
 import VirtexGlobal
 import Keys
@@ -55,13 +58,13 @@ def get_methods():
             "display": "VTEXT",
             "icon": "fas fa-code",
             "endpoint": "/hid/kb/vtext",
-            "items": VirtexGlobal.get_virtex_data_file("vtext", "vtext")
+            "items": src.common.Virtext.get_virtex_data_file("vtext", "vtext")
         },
         "files": {
             "display": "Files",
             "icon": "fas fa-file",
             "endpoint": "/hid/kb/bw",
-            "items": VirtexGlobal.get_virtex_data_file("files", "txt")
+            "items": src.common.Virtext.get_virtex_data_file("files", "txt")
         }
     }
     

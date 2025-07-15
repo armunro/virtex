@@ -1,9 +1,9 @@
-
 # encoding=utf-8
 # US keyboard layout
 import os
 import time
 from tqdm import tqdm
+
 KEY_A = 0x4  # a A
 KEY_B = 0x5  # b B
 KEY_C = 0x6  # c C
@@ -86,7 +86,6 @@ RIGHT_CTRL = 0b00010000
 RIGHT_SHIFT = 0b00100000
 RIGHT_ALT = 0b01000000
 RIGHT_GUI = 0b10000000
-
 
 RELEASE = bytes([0] * 8)
 
@@ -175,22 +174,25 @@ def press(inp_rpt: bytes, release=True):
         if release:
             out_file.write(RELEASE)
 
+
 def open_run():
     press(bytes([LEFT_GUI, 0, KEY_R, *[0] * 5]))
+
 
 def launch_app(path):
     open_run()
     time.sleep(0.2)
     type_string(f'{path}\n')
 
+
 def open_start():
     press(bytes([LEFT_GUI, 0, *[0] * 5]))
+
 
 def open_search(search, enter=False):
     open_start()
     time.sleep(0.25)
-    type_string(search +' ')
-
+    type_string(search + ' ')
 
 
 def save_file(filename: str, gui_wait=0.5):
@@ -198,7 +200,8 @@ def save_file(filename: str, gui_wait=0.5):
     time.sleep(gui_wait)
     type_string(filename)
     press(bytes([0, 0, ENTER, *[0] * 5]))
-    
+
+
 def line_count(path):
     assert os.path.exists(path)
 
@@ -206,7 +209,7 @@ def line_count(path):
     with open(path) as f:
         for line in f:
             num_lines += 1
-    
+
     return num_lines
 
 

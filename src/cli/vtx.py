@@ -5,7 +5,7 @@ import subprocess
 import os
 import sys
 import VirtexConsole
-
+import src.common.Virtext
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
 import VirtexGlobal
@@ -44,6 +44,6 @@ elif args.command == 'test':
 elif args.command == 'run':
     Virtext.execute_step_file(args.file)
 elif args.command == 'cat':
-    VirtextFile.send_file(args.file)
+    src.common.Virtext.send_file(args.file)
 else:
     parser.print_help()

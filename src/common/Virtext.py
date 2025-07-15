@@ -2,6 +2,7 @@ import os
 import sys
 from time import sleep
 import yaml
+from alive_progress import alive_it
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" ))
 import Keys
 
@@ -56,4 +57,26 @@ def execute_step_file(scriptPath):
         data = yaml.safe_load(detailedYaml)
         for step in data["steps"]:  
             exec_virtext_step(step)
-        
+
+
+def send_file(path):
+    line_count = Keys.line_count(path)
+    with open(path, encoding='utf-8') as file:
+        for line in alive_it(file, line_count):
+            Keys.type_string(line)
+
+
+def get_virtex_data_file(directory, extension):
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(script_dir, "..","..", "..", "virtex-data", directory)
+    if not extension.startswith('.'):
+        extension = f'.{extension}'
+    files = [file for file in os.listdir(path) if file.endswith(extension)]
+    return files
+
+
+def get_virtex_data_file_contents(directory, name):
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(script_dir, "..", "..", ".." ,"virtex-data", directory, name)
+    with open(path, 'r', encoding='utf-8') as file:
+            return file.read()
