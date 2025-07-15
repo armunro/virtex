@@ -49,7 +49,7 @@ def example_usage():
 
     # Left click
     click(BUTTON_RIGHT)
-    time.sleep(0.2)
+    time.sleep(0.5)
 
     # Scroll down
     scroll(1)
