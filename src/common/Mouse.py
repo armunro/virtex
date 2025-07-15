@@ -42,6 +42,7 @@ def scroll(wheel=1, delay=0.05):
     send_mouse_report()
 
 def example_usage():
+    time.sleep(2.0)
     # Move diagonally down-right
     move(20, 20)
     time.sleep(0.2)
