@@ -3,7 +3,7 @@ Description=Start Virtex USB-HID System
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/virtex-start-usb
+ExecStart=/usr/bin/virtex-hid-start
 Restart=on-failure
 User=root
 

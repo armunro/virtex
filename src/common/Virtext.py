@@ -1,10 +1,10 @@
-import yaml
-import time
-import sys
 import os
+import sys
+from time import sleep
+import yaml
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" ))
 import Keys
-from alive_progress import alive_it
+
 
 def yaml_to_compact_format(input_yaml: str) -> str:
     """Convert detailed YAML to compact format."""
@@ -39,12 +39,12 @@ def yaml_to_detailed_format(compact_yaml: str) -> str:
 def exec_virtext_step(step):
     print(step)
     command = step["command"].lower()
-    if (command == "print"):
+    if command == "print":
         Keys.type_string(step["text"])
-    elif (command == "launch"):
+    elif command == "launch":
         Keys.launch_app(step["text"])
-    elif (command == "sleep"):
-        time.sleep(float(step["text"]))
+    elif command == "sleep":
+        sleep(float(step["text"]))
     else:
         print("Unknown command "+ command)
 
