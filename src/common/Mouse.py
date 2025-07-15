@@ -43,16 +43,9 @@ def scroll(wheel=1, delay=0.05):
 
 def example_usage():
     time.sleep(2.0)
-    # Move diagonally down-right
     move(20, 20)
     time.sleep(0.2)
-
-    # Left click
     click(BUTTON_RIGHT)
-    time.sleep(0.5)
-
-    # Scroll down
-    scroll(1)
 
 if __name__ == '__main__':
     if not os.path.exists(HID_MOUSE):
