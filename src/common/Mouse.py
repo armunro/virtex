@@ -48,7 +48,7 @@ def example_usage():
     time.sleep(0.2)
 
     # Left click
-    click(BUTTON_LEFT)
+    click(BUTTON_RIGHT)
     time.sleep(0.2)
 
     # Scroll down
