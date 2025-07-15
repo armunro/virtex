@@ -36,11 +36,6 @@ def click(button=BUTTON_LEFT, delay=0.05):
     time.sleep(delay)
     send_mouse_report()
 
-def scroll(wheel=1, delay=0.05):
-    send_mouse_report(wheel=wheel)
-    time.sleep(delay)
-    send_mouse_report()
-
 def example_usage():
     time.sleep(2.0)
     move(20, 20)
