@@ -37,8 +37,8 @@ elif args.command == 'update':
 elif args.command == 'test':
     VirtexConsole.show_console() #todo
 elif args.command == 'run':
-    src.common.Virtext.execute_step_file(args.file)
+    Virtext.execute_step_file(args.file)
 elif args.command == 'cat':
-    src.common.Virtext.send_file(args.file)
+    Virtext.send_file(args.file)
 else:
     parser.print_help()
