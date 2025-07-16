@@ -1,6 +1,7 @@
 # mouse_hid.py
 import time
 import os
+from dataclasses import dataclass
 
 # Path to the HID gadget for the mouse
 HID_MOUSE = '/dev/hidg1'
@@ -10,31 +11,61 @@ BUTTON_LEFT = 0x01
 BUTTON_RIGHT = 0x02
 BUTTON_MIDDLE = 0x04
 
+@dataclass
+class Mouse:
+    """High level mouse helper for HID gadget."""
+
+    device: str = HID_MOUSE
+
+    def _write(self, buttons: int = 0, x: int = 0, y: int = 0, wheel: int = 0) -> None:
+        report = bytes([
+            buttons & 0x07,
+            x & 0xFF,
+            y & 0xFF,
+            wheel & 0xFF,
+        ])
+        with open(self.device, "wb+") as f:
+            f.write(report)
+
+    def move(self, x: int, y: int, delay: float = 0.01) -> None:
+        self._write(x=x, y=y)
+        time.sleep(delay)
+        self._write()
+
+    def click(self, button: int = BUTTON_LEFT, delay: float = 0.05) -> None:
+        self._write(buttons=button)
+        time.sleep(delay)
+        self._write()
+
+    def scroll(self, wheel: int, delay: float = 0.01) -> None:
+        self._write(wheel=wheel)
+        time.sleep(delay)
+        self._write()
+
+    def drag(self, x: int, y: int, button: int = BUTTON_LEFT, delay: float = 0.01) -> None:
+        self._write(buttons=button)
+        time.sleep(0.01)
+        self.move(x, y, delay=delay)
+        self._write()
+
+
+# backward compatible helper instance
+mouse = Mouse()
+
 def send_mouse_report(buttons=0, x=0, y=0, wheel=0):
-    """
-    Send a mouse HID report.
-    buttons: bitmask (LEFT=1, RIGHT=2, MIDDLE=4)
-    x, y: signed char deltas (-127 to 127)
-    wheel: signed char for scroll (e.g., 1 = scroll up, -1 = scroll down)
-    """
-    report = bytes([
-        buttons & 0x07,  # Buttons (1 byte)
-        x & 0xFF,        # X movement (1 byte)
-        y & 0xFF,        # Y movement (1 byte)
-        wheel & 0xFF     # Wheel movement (1 byte)
-    ])
-    with open(HID_MOUSE, 'wb+') as f:
-        f.write(report)
+    mouse._write(buttons, x, y, wheel)
 
 def move(x, y, delay=0.01):
-    send_mouse_report(x=x, y=y)
-    time.sleep(delay)
-    send_mouse_report()  # release
+    mouse.move(x, y, delay)
 
 def click(button=BUTTON_LEFT, delay=0.05):
-    send_mouse_report(buttons=button)
-    time.sleep(delay)
-    send_mouse_report()
+    mouse.click(button, delay)
+
+def scroll(amount, delay=0.01):
+    mouse.scroll(amount, delay)
+
+def drag(x, y, button=BUTTON_LEFT, delay=0.01):
+    mouse.drag(x, y, button, delay)
 
 def example_usage():
     time.sleep(2.0)
