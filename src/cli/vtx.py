@@ -2,6 +2,10 @@
 #!/usr/bin/python3
 import argparse
 import VirtexConsole
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
+
 import src.common.Virtext
 import src.common.Keys
 import src.common.Mouse
