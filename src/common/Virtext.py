@@ -3,7 +3,7 @@ import sys
 from time import sleep
 import yaml
 from alive_progress import alive_it
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../" ))
+
 import Keys
 
 
