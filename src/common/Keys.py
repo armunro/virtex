@@ -2,6 +2,8 @@
 # US keyboard layout
 import os
 import time
+from dataclasses import dataclass
+from typing import Iterable
 from tqdm import tqdm
 
 KEY_A = 0x4  # a A
@@ -159,47 +161,80 @@ CHARS = {
 HID_FILENAME = '/dev/hidg0'
 
 
-def type_string(s):
-    out_file = open(HID_FILENAME, mode='rb+')
-    for c in s:
-        if c in CHARS.keys():
-            out_file.write(CHARS[c])
-            out_file.write(RELEASE)
-    out_file.close()
+@dataclass
+class Keyboard:
+    """High level keyboard helper for HID gadget."""
 
+    device: str = HID_FILENAME
 
-def press(inp_rpt: bytes, release=True):
-    with open(HID_FILENAME, mode='rb+') as out_file:
-        out_file.write(inp_rpt)
+    def _write(self, report: bytes) -> None:
+        with open(self.device, "rb+") as out:
+            out.write(report)
+
+    def release(self) -> None:
+        self._write(RELEASE)
+
+    def press(self, key: int, modifiers: int = 0, *, release: bool = True) -> None:
+        report = bytes([modifiers, 0, key, 0, 0, 0, 0, 0])
+        self._write(report)
         if release:
-            out_file.write(RELEASE)
+            self.release()
+
+    def combo(self, keys: Iterable[int], modifiers: int = 0) -> None:
+        codes = list(keys)[:6]
+        report = bytes([modifiers, 0, *codes, *([0] * (6 - len(codes)))])
+        self._write(report)
+        self.release()
+
+    def type_text(self, text: str, interval: float = 0.0) -> None:
+        for ch in text:
+            if ch in CHARS:
+                self._write(CHARS[ch])
+                self.release()
+                if interval:
+                    time.sleep(interval)
+
+
+# maintain backward compatible helper instance
+keyboard = Keyboard()
+
+
+def type_string(s: str, interval: float = 0.0) -> None:
+    """Backward compatible wrapper around :meth:`Keyboard.type_text`."""
+    keyboard.type_text(s, interval)
+
+
+def press(inp_rpt: bytes, release: bool = True) -> None:
+    keyboard._write(inp_rpt)
+    if release:
+        keyboard.release()
 
 
 def open_run():
-    press(bytes([LEFT_GUI, 0, KEY_R, *[0] * 5]))
+    keyboard.combo([KEY_R], modifiers=LEFT_GUI)
 
 
 def launch_app(path):
     open_run()
     time.sleep(0.2)
-    type_string(f'{path}\n')
+    keyboard.type_text(f"{path}\n")
 
 
 def open_start():
-    press(bytes([LEFT_GUI, 0, *[0] * 5]))
+    keyboard.combo([], modifiers=LEFT_GUI)
 
 
 def open_search(search, enter=False):
     open_start()
     time.sleep(0.25)
-    type_string(search + ' ')
+    keyboard.type_text(search + " ")
 
 
 def save_file(filename: str, gui_wait=0.5):
-    press(bytes([LEFT_CTRL, 0, KEY_S, *[0] * 5]))
+    keyboard.combo([KEY_S], modifiers=LEFT_CTRL)
     time.sleep(gui_wait)
-    type_string(filename)
-    press(bytes([0, 0, ENTER, *[0] * 5]))
+    keyboard.type_text(filename)
+    keyboard.press(ENTER)
 
 
 def line_count(path):
@@ -216,7 +251,7 @@ def line_count(path):
 def type_file_to_notepad(filepath: str, filename=None, close=True, gui_wait=0.5):
     assert os.path.exists(filepath)
     # open notepad
-    notepad()
+    launch_app("notepad")
     # wait
     time.sleep(gui_wait)
     # get line count for progress bar
@@ -231,4 +266,4 @@ def type_file_to_notepad(filepath: str, filename=None, close=True, gui_wait=0.5)
     save_file(filename)
     if close:
         time.sleep(gui_wait)
-        press(bytes([LEFT_ALT, 0, F4, *[0] * 5]))
+        keyboard.combo([F4], modifiers=LEFT_ALT)

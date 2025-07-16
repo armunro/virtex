@@ -44,6 +44,7 @@ systemctl start virtex-hid
 ```
 
 ## Command Line Usage
+See [VTEXT2 specification](docs/VTEXT2.md) for the advanced automation syntax.
 ```bash
 # Run a VTXT step file 
 vtx run /root/virtex-data/websearch_sample.vtext
