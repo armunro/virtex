@@ -1,19 +1,10 @@
 
 #!/usr/bin/python3
 import argparse
-import subprocess
-import os
-import sys
 import VirtexConsole
 import src.common.Virtext
-
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
-import VirtexGlobal
-import Keys
-import Virtext
-import Virtext
-import VirtextFile
-
+import src.common.Keys
+import src.common.Mouse
 
 ### CLI Parser
 parser = argparse.ArgumentParser(description="Virtex")
@@ -42,7 +33,7 @@ elif args.command == 'update':
 elif args.command == 'test':
     VirtexConsole.show_console() #todo
 elif args.command == 'run':
-    Virtext.execute_step_file(args.file)
+    src.common.Virtext.execute_step_file(args.file)
 elif args.command == 'cat':
     src.common.Virtext.send_file(args.file)
 else:
