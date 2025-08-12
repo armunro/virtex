@@ -3,7 +3,7 @@ Description=Start Virtex HTTP Service
 After=network.target
 
 [Service]
-ExecStart=python3 /root/virtex/src/Automation/Ghost/ghost.py
+ExecStart=python3 /root/virtex/src/automation/ghost/ghost.py
 
 Restart=on-failure
 User=root
