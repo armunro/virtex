@@ -14,6 +14,11 @@ chmod +x /usr/bin/virtex-hid-start
 cp -f $SCRIPT_ROOT/virtex-web.service /etc/systemd/system
 chmod +x /etc/systemd/system/virtex-web.service
 
+# Virtex Ghost Script
+cp -f $SCRIPT_ROOT/virtex-ghost.service /etc/systemd/system
+chmod +x /etc/systemd/system/virtex-ghost.service
+
 systemctl daemon-reload
 systemctl enable virtex-hid
 systemctl enable virtex-web
+systemctl enable virtex-ghost
