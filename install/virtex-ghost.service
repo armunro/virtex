@@ -1,0 +1,12 @@
+[Unit]
+Description=Start Virtex HTTP Service
+After=network.target
+
+[Service]
+ExecStart=python3 /root/virtex/src/Automation/Ghost/ghost.py
+
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target
