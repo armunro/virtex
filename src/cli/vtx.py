@@ -6,7 +6,7 @@ import sys
 import os
 
 from src.common import Virtext, Keys
-from src.common.Keys import type_string
+
 
 
 ### CLI Parser
