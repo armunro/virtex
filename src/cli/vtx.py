@@ -12,7 +12,7 @@ sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../com
 import Virtext
 import Keys
 import Mouse
-keyboard = Keyboard()
+keyboard = Keys.Keyboard()
 ### CLI Parser
 parser = argparse.ArgumentParser(description="Virtex")
 subparsers = parser.add_subparsers(dest='command', help='Subcommands')
