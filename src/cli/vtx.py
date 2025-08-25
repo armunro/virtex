@@ -48,6 +48,6 @@ elif args.command == 'run':
 elif args.command == 'cat':
     Virtext.send_file(args.file)
 elif args.command == 'echo':
-    type_string(args.text)
+    Keys.type_string(args.text)
 else:
     parser.print_help()
