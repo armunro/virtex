@@ -17,28 +17,26 @@ parser = argparse.ArgumentParser(description="Virtex")
 subparsers = parser.add_subparsers(dest='command', help='Subcommands')
 
 # Echo
-parse_echo = subparsers.add_parser('echo', help='Type text to the target')
+parse_echo = subparsers.add_parser('echo', help='Send a string to the target')
 parse_echo.add_argument('text')
 
-# Launch
-parse_launch = subparsers.add_parser('launch', help='Open an application or file using the run dialog.')
-parse_launch.add_argument('path')
-
-# Update
-parse_update = subparsers.add_parser('update', help='Retrieve the latest copy of Virtex')
-
 # Cat
-parse_vtxt = subparsers.add_parser('cat', help='Echo a text file to the VHID.')
-parse_vtxt.add_argument('file')
-
-# Vtxt
-parse_vtxt = subparsers.add_parser('run', help='Replay HID automation files remotely.')
+parse_vtxt = subparsers.add_parser('cat', help='Send a text file to the target.')
 parse_vtxt.add_argument('file')
 
 # Console
 parse_console = subparsers.add_parser('console', help='Interactive terminal with remote text entry.')
 
+# Launch
+parse_launch = subparsers.add_parser('launch', help='Open an application or file using the run dialog.')
+parse_launch.add_argument('path')
 
+# Vtxt
+parse_vtxt = subparsers.add_parser('run', help='Replay HID automation files remotely.')
+parse_vtxt.add_argument('file')
+
+# Update
+parse_update = subparsers.add_parser('update', help='Get the latest copy of Virtex')
 
 
 args = parser.parse_args()
