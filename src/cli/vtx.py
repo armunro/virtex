@@ -5,7 +5,6 @@ import VirtexConsole
 import sys
 import os
 
-from src.common.Keys import type_string
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
 
