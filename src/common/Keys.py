@@ -200,7 +200,6 @@ keyboard = Keyboard()
 
 
 def type_string(s: str, interval: float = 0.0) -> None:
-    """Backward compatible wrapper around :meth:`Keyboard.type_text`."""
     keyboard.type_text(s, interval)
 
 

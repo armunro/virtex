@@ -32,42 +32,25 @@ systemctl start virtex-hid
 ```
 ## How Does it Work?
 `libcomposite` is a Linux kernel module that can emulate USB devices. These virtual usb devices are sometimes referred to as 'gadgets'. When supported by the Raspberry Pi Zero 2 and other Single Board Computers (SBCs), we have a robust and _relatively_ simple platform for tooling. Virtex adds simple python APIs, functions and interfaces.
-## Directory Structures
-```bash
-/root
-  /virtex
-    /src         # All of the code
-      /api         # HTTP Api for invoking functions
-      /cli         # Command line tools for automation
-      /common      # Shared code
-      /ui          # Precompiled web frontend
-```
+
 
 ## Command Line Usage
 See [VTEXT2 specification](docs/VTEXT2.md) for the advanced automation syntax.
 ```bash
-# Run a VTXT step file 
-vtx run /root/virtex-data/websearch_sample.vtext
+usage: vtx.py [-h] {echo,cat,console,launch,run,update} ...
 
-# Send text using an interactive terminal
-vtx console
+Virtex
 
-## REST API Usage
-```bash
-# STEP 1: Create localhost:5000->5000 SSH tunnel
-# Ensure virtex-serve is running
-systemctl status virtex-serve
+positional arguments:
+  {echo,cat,console,launch,run,update}
+                        Subcommands
+    echo                Send a string to the target
+    cat                 Send a text file to the target.
+    console             Interactive terminal with remote text entry.
+    launch              Open an application or file using the run dialog.
+    run                 Replay HID automation files remotely.
+    update              Get the latest copy of Virtex
 
-# Type a multi-line document
-POST http://localhost:5000/hid/kb/string
-...body...
-
-# Type a simple string
-GET http://localhost:5000/hid/kb/string?text=Hello World!
-
-# Run a vtxt file
-GET http://localhost:5000/hid/kb/vtext?file=ytest.vtext
-
-# Send a file in the `virtex-data/files`
-GET http://localhost:5000/hid/kb/bw?file=test2.txt
+options:
+  -h, --help            show this help message and exit
 ```

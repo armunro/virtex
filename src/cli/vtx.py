@@ -5,13 +5,14 @@ import VirtexConsole
 import sys
 import os
 
+from src.common.Keys import Keyboard
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
 
 import Virtext
 import Keys
 import Mouse
-
+keyboard = Keyboard()
 ### CLI Parser
 parser = argparse.ArgumentParser(description="Virtex")
 subparsers = parser.add_subparsers(dest='command', help='Subcommands')
@@ -52,7 +53,7 @@ elif args.command == 'run':
 elif args.command == 'cat':
     Virtext.send_file(args.file)
 elif args.command == 'echo':
-    Keys.type_string(args.text)
+    keyboard.type_text(args.text)
 elif args.command == 'launch':
     Keys.launch_app(args.path)
 else:
