@@ -5,13 +5,9 @@ import VirtexConsole
 import sys
 import os
 
+from src.common import Virtext, Keys
 from src.common.Keys import type_string
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
-
-import Virtext
-import Keys
-import Mouse
 
 ### CLI Parser
 parser = argparse.ArgumentParser(description="Virtex")
