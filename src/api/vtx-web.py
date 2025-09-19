@@ -6,9 +6,9 @@ import os
 import time
 from urllib.parse import quote
 
-import src.common.Virtext
-
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
+
+
 import VirtexGlobal
 import Keys
 import Virtext

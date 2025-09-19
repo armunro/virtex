@@ -5,14 +5,14 @@ import VirtexConsole
 import sys
 import os
 
-
-
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../common" ))
 
 import Virtext
 import Keys
 import Mouse
 keyboard = Keys.Keyboard()
+
+
 ### CLI Parser
 parser = argparse.ArgumentParser(description="Virtex")
 subparsers = parser.add_subparsers(dest='command', help='Subcommands')
@@ -32,7 +32,7 @@ parse_console = subparsers.add_parser('console', help='Interactive terminal with
 parse_launch = subparsers.add_parser('launch', help='Open an application or file using the run dialog.')
 parse_launch.add_argument('path')
 
-# Vtxt
+# Run
 parse_vtxt = subparsers.add_parser('run', help='Replay HID automation files remotely.')
 parse_vtxt.add_argument('file')
 
@@ -45,8 +45,6 @@ args = parser.parse_args()
 if args.command == 'console':
     VirtexConsole.show_console()
 elif args.command == 'update':
-    VirtexConsole.show_console() #todo
-elif args.command == 'test':
     VirtexConsole.show_console() #todo
 elif args.command == 'run':
     Virtext.execute_step_file(args.file)
