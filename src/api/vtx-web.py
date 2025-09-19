@@ -58,13 +58,13 @@ def get_methods():
             "display": "VTEXT",
             "icon": "fas fa-code",
             "endpoint": "/hid/kb/vtext",
-            "items": src.common.Virtext.get_virtex_data_file("vtext", "vtext")
+            "items": Virtext.get_virtex_data_file("vtext", "vtext")
         },
         "files": {
             "display": "Files",
             "icon": "fas fa-file",
             "endpoint": "/hid/kb/bw",
-            "items": src.common.Virtext.get_virtex_data_file("files", "txt")
+            "items": Virtext.get_virtex_data_file("files", "txt")
         }
     }
     
